@@ -1,0 +1,6 @@
+[submodule "thirdParty/libusb"]
+	path = thirdParty/libusb
+	url = https://github.com/libusb/libusb.git
+[submodule "thirdParty/libuvc"]
+	path = thirdParty/libuvc
+	url = https://github.com/libuvc/libuvc.git

@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "glut.h": "c"
+        "glut.h": "c",
+        "stdio.h": "c",
+        "cstdlib": "c",
+        "bmp.h": "c"
     }
 }

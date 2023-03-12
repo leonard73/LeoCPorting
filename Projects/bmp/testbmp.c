@@ -70,7 +70,7 @@ int main(int argc,char * argv[])
     test_read_bmp_and_show_info(bmpInputPath);
     //test2
     test_read_bmp_and_save_img_bmp(bmpInputPath,"out.bmp");
-    //test3
+    // //test3
     test_read_bmp_bgr888_and_save_bgr555(bmpInputPath,"out_bgr555.bmp");
 
 }
