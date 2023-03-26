@@ -7,9 +7,9 @@ void saveBmpDataToFile_colorTBL(uint8_t * data_p,uint32_t pixelW,uint32_t pixelH
     //s0 compute key parameters info
     uint32_t imageSize = pixelW * pixelH * pixelS;
     uint32_t bitsPerPixel = pixelS <<3;
-    uint32_t imageDataOffsetFromHead       = sizeof(BMP_INFO_HEADER) + sizeof(BMP_FILE_HEADER);
+    uint32_t imageDataOffsetFromHead       = 2+colorTblSize+sizeof(BMP_INFO_HEADER) + sizeof(BMP_FILE_HEADER);
     uint32_t imageDataOffsetFromFileHeader = sizeof(BMP_INFO_HEADER);
-    uint32_t fileSize                      = colorTblSize+imageSize+ sizeof(BMP_INFO_HEADER) + sizeof(BMP_FILE_HEADER);
+    uint32_t fileSize                      = 2+colorTblSize+imageSize+ sizeof(BMP_INFO_HEADER) + sizeof(BMP_FILE_HEADER);
     FILE * fp = fopen(path,"wb");
     //s1 save 'B' 'M'
     char Format_BM[2]={'B','M'};
@@ -29,14 +29,14 @@ void saveBmpDataToFile_colorTBL(uint8_t * data_p,uint32_t pixelW,uint32_t pixelH
     infoHeader.biPlanes         = 1;
     infoHeader.biBitCount       = bitsPerPixel;
     infoHeader.biCompression    = 0;
-    infoHeader.biSizeImage      = imageSize;
+    infoHeader.biSizeImage      = pixelW*pixelH*1;
     infoHeader.biXPelsPerMeter  = 37795;
     infoHeader.biYPelsPerMeter  = 37795;
     infoHeader.biClrUsed        = 0;
     infoHeader.biClrImportant   = 0;
     fwrite(&infoHeader,sizeof(BMP_INFO_HEADER),1,fp);
     //s4 save color table
-    fwrite(colorTbl,colorTblSize,sizeof(uint8_t),fp);
+    fwrite(colorTbl,sizeof(uint8_t),colorTblSize,fp);
     //s5 save image data with inversed lines
     for(uint32_t i = 0;i<pixelH;i++)
     {
@@ -108,13 +108,54 @@ void readBmpFromFile(char* path,BMP_FILE_HEADER * bmpFileHeader_p,BMP_INFO_HEADE
     fread(&bfType,sizeof(bfType),1,fp);
     fread(bmpFileHeader_p,sizeof(BMP_FILE_HEADER),1,fp);
     fread(bmpInfoHeader_p,sizeof(BMP_INFO_HEADER),1,fp);
-    size_t colorTableSize = bmpInfoHeader_p->biSize - sizeof(BMP_INFO_HEADER);
+    size_t colorTableSize = bmpFileHeader_p->bfSize - bmpInfoHeader_p->biSizeImage -2 -sizeof(BMP_FILE_HEADER) - sizeof(BMP_INFO_HEADER);
     printf("colorTableSize=%d\n",colorTableSize);
-    uint8_t * table = (uint8_t *)malloc(colorTableSize);
     if(colorTableSize>0)
     {
-    fread(table,1,colorTableSize,fp);
+        uint8_t * table = (uint8_t *)malloc(colorTableSize);
+        fread(table,1,colorTableSize,fp);
+        // for(int i=0;i<colorTableSize;i++)
+        // {
+        //     printf("colortable[%3d]: %3d\n",i,table[i]);
+        // }
+        printf("bfType: %d %d [%c%c] \n",bfType&0xff,bfType>>8,bfType&0xff,bfType>>8);
+        uint32_t channel = bmpInfoHeader_p->biBitCount>>3;
+        uint32_t raw_dataSize=bmpInfoHeader_p->biSizeImage;
+        uint32_t raw_channel = channel;
+        channel =3;
+        uint32_t dataSize    =bmpInfoHeader_p->biWidth * bmpInfoHeader_p->biHeight * channel;
+        *dataPtr=(uint8_t *)malloc(dataSize);
+        uint8_t * raw=(uint8_t *)malloc(raw_dataSize);
+        // fread(raw,sizeof(uint8_t),raw_dataSize,fp);
+        for(uint32_t i=0;i<bmpInfoHeader_p->biHeight;i++)
+        {
+            fread((raw) + (bmpInfoHeader_p->biHeight-i-1)*bmpInfoHeader_p->biWidth*raw_channel,sizeof(uint8_t),bmpInfoHeader_p->biWidth*raw_channel,fp);
+        }
+        BMP_COLOR_TBL * tbl_array = (BMP_COLOR_TBL*)table;
+
+
+        for(uint32_t i=0;i<bmpInfoHeader_p->biHeight;i++)
+        {
+            uint8_t * write_line_ptr = (*dataPtr) + (bmpInfoHeader_p->biHeight-i-1)*bmpInfoHeader_p->biWidth*channel;
+            uint8_t * raw_line_ptr   = (raw) + (bmpInfoHeader_p->biHeight-i-1)*bmpInfoHeader_p->biWidth*raw_channel;
+            for(uint32_t j=0;j<bmpInfoHeader_p->biWidth;j++)
+            {
+                uint8_t v = raw_line_ptr[j];
+                BMP_COLOR_TBL tbl_array_ = tbl_array[v];
+                write_line_ptr[j*channel+0] = tbl_array_.B;
+                write_line_ptr[j*channel+1] = tbl_array_.G;
+                write_line_ptr[j*channel+2] = tbl_array_.R;
+                
+            }
+            // fread((*dataPtr) + (bmpInfoHeader_p->biHeight-i-1)*bmpInfoHeader_p->biWidth*channel,sizeof(uint8_t),bmpInfoHeader_p->biWidth*channel,fp);
+        }
+        free(raw);
+        bmpInfoHeader_p->biBitCount=channel<<3;
+        bmpInfoHeader_p->biSizeImage = bmpInfoHeader_p->biWidth * bmpInfoHeader_p->biHeight * channel;
+        free(table);
     }
+    else
+    {
     printf("bfType: %d %d [%c%c] \n",bfType&0xff,bfType>>8,bfType&0xff,bfType>>8);
     uint32_t channel = bmpInfoHeader_p->biBitCount>>3;
     uint32_t dataSize=bmpInfoHeader_p->biSizeImage;
@@ -123,7 +164,7 @@ void readBmpFromFile(char* path,BMP_FILE_HEADER * bmpFileHeader_p,BMP_INFO_HEADE
     {
         fread((*dataPtr) + (bmpInfoHeader_p->biHeight-i-1)*bmpInfoHeader_p->biWidth*channel,sizeof(uint8_t),bmpInfoHeader_p->biWidth*channel,fp);
     }
-    free(table);
+    }
     fclose(fp);
 }
 void displayBmpHeader(BMP_FILE_HEADER * bmpFileHeader_p,BMP_INFO_HEADER * bmpInfoHeader_p)
