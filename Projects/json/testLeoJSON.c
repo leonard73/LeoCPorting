@@ -20,7 +20,7 @@ void read_json(char * json_file_path)
     int size=0;
     read_data_from_file(&str_json_to_read,json_file_path,&size);
     printf("size=%d\n",size);
-    memset(str_json_to_read,0x44,size);
+    // memset(str_json_to_read,0x44,size);
     leoJSON_decode_json_str(str_json_to_read);
     
     free(str_json_to_read);
