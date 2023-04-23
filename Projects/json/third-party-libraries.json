@@ -1,0 +1,1153 @@
+[ {
+  "name" : "ASM (JetBrains's fork)",
+  "url" : "https://github.com/JetBrains/intellij-deps-asm",
+  "version" : "9.2",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-deps-asm/blob/master/LICENSE.txt"
+}, {
+  "name" : "AhoCorasickDoubleArrayTrie",
+  "url" : "https://github.com/hankcs/AhoCorasickDoubleArrayTrie",
+  "version" : "1.2.3",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/hankcs/AhoCorasickDoubleArrayTrie#license"
+}, {
+  "name" : "Amazon Ion Java",
+  "url" : "https://github.com/amzn/ion-java",
+  "version" : "1.8.2-4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/amzn/ion-java/blob/master/LICENSE"
+}, {
+  "name" : "Android libwebp library",
+  "url" : "https://github.com/webmproject/libwebp",
+  "version" : "custom revision",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/webmproject/libwebp/blob/main/COPYING"
+}, {
+  "name" : "Apache Axis",
+  "url" : "https://axis.apache.org/axis/",
+  "version" : "1.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "http://svn.apache.org/viewvc/axis/axis1/java/trunk/LICENSE?view=markup"
+}, {
+  "name" : "Apache Commons CLI",
+  "url" : "https://commons.apache.org/proper/commons-cli/",
+  "version" : "1.5.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-cli.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Codec",
+  "url" : "https://commons.apache.org/proper/commons-codec/",
+  "version" : "1.15",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/commons-codec/blob/master/LICENSE.txt"
+}, {
+  "name" : "Apache Commons Collections",
+  "url" : "https://commons.apache.org/proper/commons-collections/",
+  "version" : "3.2.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-collections.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Compress",
+  "url" : "https://commons.apache.org/proper/commons-compress/",
+  "version" : "1.21",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-compress.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Discovery",
+  "url" : "https://commons.apache.org/dormant/commons-discovery/",
+  "version" : "0.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://commons.apache.org/dormant/commons-discovery/license.html"
+}, {
+  "name" : "Apache Commons HTTPClient",
+  "url" : "https://hc.apache.org/httpclient-3.x",
+  "version" : "3.1&nbsp; (with patch by JetBrains)",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Apache Commons IO",
+  "url" : "https://commons.apache.org/proper/commons-io/",
+  "version" : "2.11.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-io.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Imaging (JetBrains's fork)",
+  "url" : "https://github.com/JetBrains/intellij-deps-commons-imaging",
+  "version" : "1.0-RC-1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-deps-commons-imaging/blob/master/LICENSE.txt"
+}, {
+  "name" : "Apache Commons Lang",
+  "url" : "https://commons.apache.org/proper/commons-lang/",
+  "version" : "3.12.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-lang.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Logging",
+  "url" : "https://commons.apache.org/proper/commons-logging/",
+  "version" : "1.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-logging.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
+}, {
+  "name" : "Apache Commons Text",
+  "url" : "https://github.com/apache/commons-text",
+  "version" : "1.10.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/commons-text/blob/master/LICENSE.txt"
+}, {
+  "name" : "Apache Ivy",
+  "url" : "https://github.com/apache/ant-ivy",
+  "version" : "2.5.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/ant-ivy/blob/master/LICENSE"
+}, {
+  "name" : "Apache Lucene",
+  "url" : "https://lucene.apache.org/java",
+  "version" : "8.11.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Apache Tuweni-Toml",
+  "url" : "https://github.com/apache/incubator-tuweni/tree/main/toml",
+  "version" : "2.0.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/incubator-tuweni/blob/main/LICENSE"
+}, {
+  "name" : "AssertJ Swing",
+  "url" : "https://github.com/assertj/assertj-swing",
+  "version" : "3.17.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/assertj/assertj-swing/blob/main/licence-header.txt"
+}, {
+  "name" : "AssertJ fluent assertions",
+  "url" : "https://github.com/assertj/assertj-core",
+  "version" : "3.23.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/assertj/assertj-core/blob/main/LICENSE.txt"
+}, {
+  "name" : "Automaton",
+  "url" : "https://www.brics.dk/automaton/",
+  "version" : "1.12-1",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://github.com/cs-au-dk/dk.brics.automaton/blob/master/COPYING"
+}, {
+  "name" : "Byte Buddy agent",
+  "url" : "https://github.com/raphw/byte-buddy",
+  "version" : "1.12.17",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/raphw/byte-buddy/blob/master/LICENSE"
+}, {
+  "name" : "CGLib",
+  "url" : "https://github.com/cglib/cglib/",
+  "version" : "3.3.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/cglib/cglib/blob/master/LICENSE"
+}, {
+  "name" : "Common Annotations for the JavaTM Platform API",
+  "url" : "https://github.com/javaee/javax.annotation",
+  "version" : "1.3.2",
+  "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
+  "licenseUrl" : "https://oss.oracle.com/licenses/CDDL+GPL-1.1"
+}, {
+  "name" : "Dart Analysis Server",
+  "url" : "https://github.com/dart-lang/eclipse3",
+  "version" : "custom revision",
+  "license" : "Eclipse Public License 1.0",
+  "licenseUrl" : "https://www.eclipse.org/org/documents/epl-v10.html"
+}, {
+  "name" : "Dart VM Service drivers",
+  "url" : "https://github.com/dart-lang/vm_service_drivers",
+  "version" : "custom revision",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/dart-lang/vm_service_drivers/blob/master/LICENSE"
+}, {
+  "name" : "EditorConfig Java Core",
+  "url" : "https://github.com/editorconfig/editorconfig-core-java/",
+  "version" : "1.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/editorconfig/editorconfig-core-java/blob/master/LICENSE"
+}, {
+  "name" : "FiraCode",
+  "url" : "https://github.com/tonsky/FiraCode",
+  "version" : "1.206",
+  "license" : "OFL",
+  "licenseUrl" : "https://github.com/tonsky/FiraCode/blob/master/LICENSE"
+}, {
+  "name" : "Gherkin keywords",
+  "url" : "https://github.com/cucumber/cucumber/tree/master/gherkin",
+  "version" : "2.12.2",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/cucumber/cucumber/blob/master/gherkin/LICENSE"
+}, {
+  "name" : "Google Drive API V3",
+  "url" : "https://github.com/googleapis/google-api-java-client-services/tree/master/clients/google-api-services-drive/v3",
+  "version" : "v3-rev20211107-1.32.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/googleapis/google-api-java-client-services/blob/master/LICENSE"
+}, {
+  "name" : "Gradle",
+  "url" : "https://gradle.org/",
+  "version" : "7.5.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/gradle/gradle/blob/master/LICENSE"
+}, {
+  "name" : "Grazie AI",
+  "url" : "https://packages.jetbrains.team/maven/p/grazi/grazie-platform-public/",
+  "version" : "0.2.63",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Groovy",
+  "url" : "https://groovy-lang.org/",
+  "version" : "3.0.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/groovy/blob/master/LICENSE"
+}, {
+  "name" : "Groovy JSON",
+  "url" : "https://groovy-lang.org/",
+  "version" : "3.0.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/groovy/blob/master/LICENSE"
+}, {
+  "name" : "Groovy JSR-223",
+  "url" : "https://groovy-lang.org/",
+  "version" : "3.0.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/groovy/blob/master/LICENSE"
+}, {
+  "name" : "Groovy Templates",
+  "url" : "https://groovy-lang.org/",
+  "version" : "3.0.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/groovy/blob/master/LICENSE"
+}, {
+  "name" : "Groovy XML",
+  "url" : "https://groovy-lang.org/",
+  "version" : "3.0.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/groovy/blob/master/LICENSE"
+}, {
+  "name" : "Gson",
+  "url" : "https://github.com/google/gson",
+  "version" : "2.9.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/google/gson/blob/master/LICENSE"
+}, {
+  "name" : "Guava",
+  "url" : "https://github.com/google/guava",
+  "version" : "31.1-jre",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/google/guava/blob/master/COPYING"
+}, {
+  "name" : "HDR Histogram",
+  "url" : "https://github.com/HdrHistogram/HdrHistogram",
+  "version" : "2.1.12",
+  "license" : "CC0 1.0 Universal",
+  "licenseUrl" : "https://github.com/HdrHistogram/HdrHistogram/blob/master/LICENSE.txt"
+}, {
+  "name" : "Hamcrest",
+  "url" : "https://hamcrest.org/",
+  "version" : "1.3",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/hamcrest/JavaHamcrest/blob/master/LICENSE.txt"
+}, {
+  "name" : "HttpComponents HttpClient",
+  "url" : "https://hc.apache.org/httpcomponents-client-ga/index.html",
+  "version" : "4.5.13",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "ICU4J",
+  "url" : "https://site.icu-project.org/",
+  "version" : "71.1",
+  "license" : "Unicode",
+  "licenseUrl" : "https://www.unicode.org/copyright.html"
+}, {
+  "name" : "ISO RELAX",
+  "url" : "https://sourceforge.net/projects/iso-relax/",
+  "version" : "20030108",
+  "license" : "MIT",
+  "licenseUrl" : "https://opensource.org/licenses/MIT"
+}, {
+  "name" : "Inconsolata",
+  "url" : "https://github.com/google/fonts/tree/main/ofl/inconsolata",
+  "version" : "001.010",
+  "license" : "OFL",
+  "licenseUrl" : "https://github.com/google/fonts/blob/master/ofl/inconsolata/OFL.txt"
+}, {
+  "name" : "Incremental DOM",
+  "url" : "https://github.com/google/incremental-dom",
+  "version" : "0.7.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/google/incremental-dom/blob/master/LICENSE"
+}, {
+  "name" : "IntelliJ IDEA Code Coverage Agent",
+  "url" : "https://github.com/jetbrains/intellij-coverage",
+  "version" : "1.0.682",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
+}, {
+  "name" : "IntelliJ IDEA Test Discovery Agent",
+  "url" : "https://github.com/JetBrains/intellij-coverage/tree/master/test-discovery",
+  "version" : "1.0.682",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
+}, {
+  "name" : "JAXB (JSR 222) Reference Implementation",
+  "url" : "https://github.com/javaee/jaxb-v2",
+  "version" : "2.3.1",
+  "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
+  "licenseUrl" : "https://oss.oracle.com/licenses/CDDL+GPL-1.1"
+}, {
+  "name" : "JAXB (Java Architecture for XML Binding) API",
+  "url" : "https://github.com/javaee/jaxb-spec",
+  "version" : "2.3.1",
+  "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
+  "licenseUrl" : "https://oss.oracle.com/licenses/CDDL+GPL-1.1"
+}, {
+  "name" : "JCEF",
+  "url" : "https://bitbucket.org/chromiumembedded/java-cef",
+  "version" : "104.4.26-g4180781-chromium-104.0.5112.102-api-1.8",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://bitbucket.org/chromiumembedded/java-cef/src/master/LICENSE.txt"
+}, {
+  "name" : "JCIP Annotations",
+  "url" : "https://www.jcip.net",
+  "version" : "1.0",
+  "license" : "Creative Commons Attribution License",
+  "licenseUrl" : "https://creativecommons.org/licenses/by/2.5"
+}, {
+  "name" : "JCodings",
+  "url" : "https://github.com/jruby/jcodings",
+  "version" : "1.0.55",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/jruby/jcodings/blob/master/LICENSE.txt"
+}, {
+  "name" : "JGit",
+  "url" : "https://www.eclipse.org/jgit/",
+  "version" : "6.2.0.202206071550-r",
+  "license" : "Eclipse Distribution License 1.0",
+  "licenseUrl" : "https://www.eclipse.org/org/documents/edl-v10.php"
+}, {
+  "name" : "JGit (develar's fork)",
+  "url" : "https://github.com/develar/jgit",
+  "version" : "4.0",
+  "license" : "Eclipse Distribution License 1.0",
+  "licenseUrl" : "https://www.eclipse.org/org/documents/edl-v10.php"
+}, {
+  "name" : "JGoodies Common",
+  "url" : "https://www.jgoodies.com/freeware/libraries/looks/",
+  "version" : "1.4.0",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "JGoodies Forms",
+  "url" : "https://www.jgoodies.com/freeware/libraries/forms/",
+  "version" : "1.1-preview",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "JNA",
+  "url" : "https://github.com/java-native-access/jna",
+  "version" : "5.12.1",
+  "license" : "LGPL 2.1",
+  "licenseUrl" : "https://www.opensource.org/licenses/lgpl-2.1.php"
+}, {
+  "name" : "JSON",
+  "url" : "https://www.json.org/",
+  "version" : "custom revision",
+  "license" : "JSON License",
+  "licenseUrl" : "https://www.json.org/license.html"
+}, {
+  "name" : "JSON Schema (schema.json)",
+  "url" : "https://json-schema.org/draft-04/schema#",
+  "version" : "draft-04",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "JSON Schema (schema06.json)",
+  "url" : "https://json-schema.org/draft-06/schema#",
+  "version" : "draft-06",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "JSON Schema (schema07.json)",
+  "url" : "https://json-schema.org/draft-07/schema#",
+  "version" : "draft-07",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "JSON in Java",
+  "url" : "https://github.com/stleary/JSON-java",
+  "version" : "20170516",
+  "license" : "JSON License",
+  "licenseUrl" : "https://www.json.org/license.html"
+}, {
+  "name" : "JSch",
+  "url" : "https://www.jcraft.com/jsch/",
+  "version" : "0.1.55",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://www.jcraft.com/jsch/LICENSE.txt"
+}, {
+  "name" : "JUnit",
+  "url" : "https://junit.org/",
+  "version" : "4.13.2",
+  "license" : "Eclipse Public License 1.0",
+  "licenseUrl" : "https://www.eclipse.org/org/documents/epl-v10.html"
+}, {
+  "name" : "Jackson",
+  "url" : "https://github.com/FasterXML/jackson",
+  "version" : "2.14.0-rc1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/jackson-core/blob/2.14/LICENSE"
+}, {
+  "name" : "Jackson Databind",
+  "url" : "https://github.com/FasterXML/jackson-databind",
+  "version" : "2.14.0-rc1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/jackson-databind/blob/2.14/LICENSE"
+}, {
+  "name" : "Jackson Module Kotlin",
+  "url" : "https://github.com/FasterXML/jackson-module-kotlin",
+  "version" : "2.14.0-rc1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/jackson-module-kotlin/blob/2.14/LICENSE"
+}, {
+  "name" : "Jakarta ORO",
+  "url" : "https://jakarta.apache.org/oro/",
+  "version" : "2.0.8",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://svn.apache.org/repos/asf/jakarta/oro/trunk/LICENSE"
+}, {
+  "name" : "Java Compatibility",
+  "url" : "https://github.com/JetBrains/intellij-deps-java-compatibility",
+  "version" : "1.0.1",
+  "license" : "GPL 2.0 + Classpath",
+  "licenseUrl" : "https://raw.githubusercontent.com/JetBrains/intellij-deps-java-compatibility/master/LICENSE"
+}, {
+  "name" : "Java Server Pages (JSP) for Visual Studio Code",
+  "url" : "https://github.com/pthorsson/vscode-jsp",
+  "version" : "0.0.3",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/pthorsson/vscode-jsp/blob/master/LICENSE"
+}, {
+  "name" : "Java Simple Serial Connector",
+  "url" : "https://github.com/java-native/jssc",
+  "version" : "2.9.4",
+  "license" : "LGPL 3.0",
+  "licenseUrl" : "https://github.com/java-native/jssc/blob/master/LICENSE.txt"
+}, {
+  "name" : "Java String Similarity",
+  "url" : "https://github.com/tdebatty/java-string-similarity",
+  "version" : "2.0.0",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/tdebatty/java-string-similarity/blob/master/LICENSE.md"
+}, {
+  "name" : "JavaBeans Activation Framework",
+  "url" : "https://github.com/javaee/activation",
+  "version" : "1.2.0",
+  "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
+  "licenseUrl" : "https://github.com/javaee/activation/blob/master/LICENSE.txt"
+}, {
+  "name" : "Jaxen",
+  "url" : "https://github.com/jaxen-xpath/jaxen",
+  "version" : "1.2.0",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/jaxen-xpath/jaxen/blob/master/LICENSE.txt"
+}, {
+  "name" : "Jayway JsonPath",
+  "url" : "https://github.com/json-path/JsonPath",
+  "version" : "2.7.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/json-path/JsonPath/blob/master/LICENSE"
+}, {
+  "name" : "JediTerm",
+  "url" : "https://github.com/JetBrains/jediterm",
+  "version" : "2.69",
+  "license" : "LGPL 3",
+  "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
+}, {
+  "name" : "JediTerm Type Ahead",
+  "url" : "https://github.com/JetBrains/jediterm",
+  "version" : "2.69",
+  "license" : "LGPL 3",
+  "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
+}, {
+  "name" : "JetBrains Annotations",
+  "url" : "https://github.com/JetBrains/java-annotations",
+  "version" : "23.0.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/java-annotations/blob/master/LICENSE.txt"
+}, {
+  "name" : "JetBrains Annotations for Java 5",
+  "url" : "https://github.com/JetBrains/java-annotations",
+  "version" : "23.0.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/java-annotations/blob/master/LICENSE.txt"
+}, {
+  "name" : "JetBrains Runtime",
+  "url" : "https://github.com/JetBrains/JetBrainsRuntime",
+  "version" : "11",
+  "license" : "GNU General Public License, version 2, with the Classpath Exception",
+  "licenseUrl" : "https://github.com/JetBrains/JetBrainsRuntime/blob/master/LICENSE"
+}, {
+  "name" : "JetBrains Runtime API",
+  "url" : "https://github.com/JetBrains/JetBrainsRuntime",
+  "version" : "17.1.3.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Joni",
+  "url" : "https://github.com/jruby/joni",
+  "version" : "2.1.43",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/jruby/joni/blob/master/LICENSE"
+}, {
+  "name" : "Kotlin Coroutines for Guava",
+  "url" : "https://github.com/Kotlin/kotlinx.coroutines",
+  "version" : "1.6.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin Coroutines for JDK 8",
+  "url" : "https://github.com/Kotlin/kotlinx.coroutines",
+  "version" : "1.6.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin Coroutines for Slf4j",
+  "url" : "https://github.com/Kotlin/kotlinx.coroutines",
+  "version" : "1.6.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin Standard Library for JDK 8",
+  "url" : "https://github.com/JetBrains/kotlin",
+  "version" : "1.7.22",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
+}, {
+  "name" : "Kotlin multiplatform / multi-format serialization",
+  "url" : "https://github.com/Kotlin/kotlinx.serialization",
+  "version" : "1.4.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin multiplatform / multi-format serialization",
+  "url" : "https://github.com/Kotlin/kotlinx.serialization",
+  "version" : "1.4.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin multiplatform / multi-format serialization",
+  "url" : "https://github.com/Kotlin/kotlinx.serialization",
+  "version" : "1.4.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
+}, {
+  "name" : "Kotlin reflection library",
+  "url" : "https://github.com/JetBrains/kotlin",
+  "version" : "1.7.22",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
+}, {
+  "name" : "Kryo5",
+  "url" : "https://github.com/EsotericSoftware/kryo",
+  "version" : "5.3.0",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/EsotericSoftware/kryo/blob/master/LICENSE.md"
+}, {
+  "name" : "Language Tool",
+  "url" : "https://github.com/languagetool-org/languagetool",
+  "version" : "5.8",
+  "license" : "LGPL 2.1",
+  "licenseUrl" : "https://www.gnu.org/licenses/lgpl-2.1.txt"
+}, {
+  "name" : "Language Tool (English)",
+  "url" : "https://github.com/languagetool-org/languagetool",
+  "version" : "5.8",
+  "license" : "LGPL 2.1",
+  "licenseUrl" : "https://www.gnu.org/licenses/lgpl-2.1.txt"
+}, {
+  "name" : "Log4j",
+  "url" : "https://www.slf4j.org/legacy.html#log4j-over-slf4j",
+  "version" : "1.7.36",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "MarkdownJ",
+  "url" : "https://github.com/myabc/markdownj",
+  "version" : "0.4.2",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-3-Clause"
+}, {
+  "name" : "Maven Resolver Provider",
+  "url" : "https://maven.apache.org/ref/3.6.1/maven-resolver-provider/",
+  "version" : "3.8.5",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Microba",
+  "url" : "https://microba.sourceforge.net/",
+  "version" : "0.4.2",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://microba.sourceforge.net/license.txt"
+}, {
+  "name" : "MigLayout",
+  "url" : "https://www.miglayout.com/",
+  "version" : "11.0",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://www.miglayout.com/mavensite/license.html"
+}, {
+  "name" : "NanoXML",
+  "url" : "https://mvnrepository.com/artifact/be.cyberelf.nanoxml/nanoxml/2.2.3",
+  "version" : "2.2.3",
+  "license" : "zlib/libpng",
+  "licenseUrl" : "https://www.opensource.org/licenses/zlib-license.html"
+}, {
+  "name" : "Objenesis",
+  "url" : "https://objenesis.org/",
+  "version" : "3.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "OkHttp",
+  "url" : "https://square.github.io/okhttp/",
+  "version" : "5.0.0-alpha.10",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://square.github.io/okhttp/#license"
+}, {
+  "name" : "Package Search API Models",
+  "url" : "https://github.com/JetBrains/package-search-api-models",
+  "version" : "2.2.8",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "Protocol Buffers",
+  "url" : "https://developers.google.com/protocol-buffers",
+  "version" : "3.19.4",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/google/protobuf/blob/master/LICENSE"
+}, {
+  "name" : "Proxy Vole (JetBrains's fork)",
+  "url" : "https://github.com/JetBrains/intellij-deps-proxy-vole",
+  "version" : "1.0.17",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/MarkusBernhardt/proxy-vole/blob/master/LICENSE.md"
+}, {
+  "name" : "PureJavaComm",
+  "url" : "https://github.com/nyholku/purejavacomm",
+  "version" : "0.0.11.1",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/nyholku/purejavacomm/blob/master/LICENSE.txt"
+}, {
+  "name" : "Relax NG Object Model",
+  "url" : "https://github.com/kohsuke/rngom",
+  "version" : "custom revision",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/kohsuke/rngom/blob/master/licenceheader.txt"
+}, {
+  "name" : "Rhino JavaScript Engine",
+  "url" : "https://github.com/mozilla/rhino",
+  "version" : "1.7.14",
+  "license" : "MPL 1.1",
+  "licenseUrl" : "https://www.mozilla.org/MPL/MPL-1.1.html"
+}, {
+  "name" : "Roboto",
+  "url" : "https://github.com/googlefonts/roboto",
+  "version" : "1.100141",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/google/roboto/blob/master/LICENSE"
+}, {
+  "name" : "Saxon-6.5.5",
+  "url" : "https://saxon.sourceforge.net/",
+  "version" : "6.5.5",
+  "license" : "Mozilla Public License",
+  "licenseUrl" : "https://www.mozilla.org/MPL/"
+}, {
+  "name" : "Saxon-9HE",
+  "url" : "https://saxon.sourceforge.net/",
+  "version" : "9",
+  "license" : "Mozilla Public License",
+  "licenseUrl" : "https://www.mozilla.org/MPL/"
+}, {
+  "name" : "Slf4j",
+  "url" : "https://slf4j.org/",
+  "version" : "1.7.36",
+  "license" : "MIT",
+  "licenseUrl" : "https://slf4j.org/license.html"
+}, {
+  "name" : "SnakeYAML",
+  "url" : "https://bitbucket.org/snakeyaml/snakeyaml/",
+  "version" : "1.32",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://bitbucket.org/snakeyaml/snakeyaml/src/master/LICENSE.txt"
+}, {
+  "name" : "SourceCodePro",
+  "url" : "https://github.com/adobe-fonts/source-code-pro",
+  "version" : "2.010",
+  "license" : "OFL",
+  "licenseUrl" : "https://github.com/adobe-fonts/source-code-pro/blob/master/LICENSE.md"
+}, {
+  "name" : "StreamEx",
+  "url" : "https://github.com/amaembo/streamex",
+  "version" : "0.8.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/amaembo/streamex/blob/master/LICENSE"
+}, {
+  "name" : "Thrift",
+  "url" : "https://thrift.apache.org/",
+  "version" : "0.13.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/apache/thrift/blob/master/LICENSE"
+}, {
+  "name" : "Trove4j (JetBrains's fork)",
+  "url" : "https://github.com/JetBrains/intellij-deps-trove4j",
+  "version" : "1.0.20220920",
+  "license" : "LGPL",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-deps-trove4j/blob/master/LICENSE.txt"
+}, {
+  "name" : "TwelveMonkeys ImageIO",
+  "url" : "https://github.com/haraldk/TwelveMonkeys",
+  "version" : "3.6.1",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/haraldk/TwelveMonkeys#license"
+}, {
+  "name" : "Velocity",
+  "url" : "https://velocity.apache.org/",
+  "version" : "1.7",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=velocity-engine.git;a=blob_plain;f=LICENSE;hb=HEAD"
+}, {
+  "name" : "Visual Studio Code",
+  "url" : "https://github.com/Microsoft/vscode/",
+  "version" : "1.33.1",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/Microsoft/vscode-react-native/blob/master/LICENSE.txt"
+}, {
+  "name" : "XMLBeans",
+  "url" : "https://xmlbeans.apache.org/",
+  "version" : "4.0.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://svn.jetbrains.org/idea/Trunk/bundled/WebServices/resources/lib/xmlbeans-2.3.0/xmlbeans.LICENSE"
+}, {
+  "name" : "XSLT Debugger RMI Stubs",
+  "url" : "https://confluence.jetbrains.com/display/CONTEST/XSLT-Debugger",
+  "version" : "custom revision",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "XStream",
+  "url" : "https://x-stream.github.io/",
+  "version" : "1.4.19",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://x-stream.github.io/license.html"
+}, {
+  "name" : "XZ for Java",
+  "url" : "https://tukaani.org/xz/java.html",
+  "version" : "1.9",
+  "license" : "Public Domain",
+  "licenseUrl" : "https://git.tukaani.org/?p=xz-java.git;a=blob;f=COPYING;h=8dd17645c4610c3d5eed9bcdd2699ecfac00406b;hb=refs/heads/master"
+}, {
+  "name" : "Xalan",
+  "url" : "https://xalan.apache.org/xalan-j/",
+  "version" : "2.7.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://xalan.apache.org/xalan-j/#license"
+}, {
+  "name" : "Xerces",
+  "url" : "https://xerces.apache.org/xerces2-j/",
+  "version" : "2.12.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://svn.apache.org/repos/asf/xerces/java/trunk/LICENSE"
+}, {
+  "name" : "Xerial SQLite JDBC",
+  "url" : "https://github.com/xerial/sqlite-jdbc",
+  "version" : "3.34.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/xerial/sqlite-jdbc/blob/master/LICENSE"
+}, {
+  "name" : "XmlRPC",
+  "url" : "https://ws.apache.org/xmlrpc/xmlrpc2/",
+  "version" : "2.0.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://ws.apache.org/xmlrpc/xmlrpc2/license.html"
+}, {
+  "name" : "aalto-xml",
+  "url" : "https://github.com/FasterXML/aalto-xml/",
+  "version" : "1.3.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/aalto-xml/blob/master/LICENSE"
+}, {
+  "name" : "ap-validation",
+  "url" : "https://github.com/JetBrains/ap-validation",
+  "version" : "67",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/ap-validation/blob/master/LICENSE"
+}, {
+  "name" : "batik",
+  "url" : "https://xmlgraphics.apache.org/batik/",
+  "version" : "1.14.0-24",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://xmlgraphics.apache.org/batik/license.html"
+}, {
+  "name" : "batik",
+  "url" : "https://xmlgraphics.apache.org/batik/",
+  "version" : "1.14.0-24",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://xmlgraphics.apache.org/batik/license.html"
+}, {
+  "name" : "blockmap",
+  "url" : "https://github.com/JetBrains/plugin-blockmap-patches",
+  "version" : "1.0.6",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/plugin-blockmap-patches/blob/master/LICENSE"
+}, {
+  "name" : "bouncy-castle-provider",
+  "url" : "https://bouncycastle.org",
+  "version" : "1.72",
+  "license" : "MIT",
+  "licenseUrl" : "https://bouncycastle.org/licence.html"
+}, {
+  "name" : "caffeine",
+  "url" : "https://github.com/ben-manes/caffeine",
+  "version" : "3.1.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/ben-manes/caffeine/blob/master/LICENSE"
+}, {
+  "name" : "classgraph",
+  "url" : "https://github.com/classgraph/classgraph",
+  "version" : "4.8.149",
+  "license" : "codehaus",
+  "licenseUrl" : "https://github.com/codehaus/classworlds/blob/master/classworlds/LICENSE.txt"
+}, {
+  "name" : "dbus-java",
+  "url" : "https://github.com/hypfvieh/dbus-java",
+  "version" : "4.2.1",
+  "license" : "LGPL",
+  "licenseUrl" : "https://github.com/hypfvieh/dbus-java/blob/dbus-java-3.0/LICENSE"
+}, {
+  "name" : "emoji-java",
+  "url" : "https://github.com/vdurmont/emoji-java",
+  "version" : "5.1.1",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/vdurmont/emoji-java/blob/master/LICENSE.md"
+}, {
+  "name" : "error-prone-annotations",
+  "url" : "https://github.com/google/error-prone",
+  "version" : "2.3.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/google/error-prone/blob/master/COPYING"
+}, {
+  "name" : "fastutil",
+  "url" : "https://github.com/vigna/fastutil",
+  "version" : "8.5.8-15",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/vigna/fastutil/blob/master/LICENSE-2.0"
+}, {
+  "name" : "gRPC Kotlin: Stub",
+  "url" : "https://grpc.io/",
+  "version" : "1.2.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
+}, {
+  "name" : "gRPC: Core",
+  "url" : "https://grpc.io/",
+  "version" : "1.39.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
+}, {
+  "name" : "gRPC: Netty Shaded",
+  "url" : "https://grpc.io/",
+  "version" : "1.39.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
+}, {
+  "name" : "gRPC: Protobuf",
+  "url" : "https://grpc.io/",
+  "version" : "1.39.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
+}, {
+  "name" : "gRPC: Stub",
+  "url" : "https://grpc.io/",
+  "version" : "1.39.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/grpc/grpc-java/blob/master/LICENSE"
+}, {
+  "name" : "hppc",
+  "url" : "https://github.com/carrotsearch/hppc",
+  "version" : "0.9.1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/carrotsearch/hppc/blob/master/LICENSE.txt"
+}, {
+  "name" : "imgscalr",
+  "url" : "https://github.com/thebuzzmedia/imgscalr",
+  "version" : "4.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/rkalla/imgscalr/blob/master/LICENSE"
+}, {
+  "name" : "indriya",
+  "url" : "https://github.com/unitsofmeasurement/indriya",
+  "version" : "1.3",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/unitsofmeasurement/indriya/blob/master/LICENSE"
+}, {
+  "name" : "ini4j (JetBrains's fork)",
+  "url" : "https://github.com/JetBrains/intellij-deps-ini4j",
+  "version" : "0.5.5-2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/intellij-deps-ini4j/blob/master/LICENSE.txt"
+}, {
+  "name" : "intellij-markdown",
+  "url" : "https://github.com/JetBrains/markdown",
+  "version" : "0.3.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/markdown/blob/master/LICENSE"
+}, {
+  "name" : "jackson-jr-objects",
+  "url" : "https://github.com/FasterXML/jackson-jr",
+  "version" : "2.14.0-rc1",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/FasterXML/jackson-jr/blob/2.14/LICENSE"
+}, {
+  "name" : "jetCheck",
+  "url" : "https://github.com/JetBrains/jetCheck",
+  "version" : "0.2.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/jetCheck/blob/master/LICENSE"
+}, {
+  "name" : "jsch-agent-proxy",
+  "url" : "https://github.com/ymnk/jsch-agent-proxy",
+  "version" : "0.0.9",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/ymnk/jsch-agent-proxy/blob/master/LICENSE.txt"
+}, {
+  "name" : "jsoup",
+  "url" : "https://jsoup.org",
+  "version" : "1.15.3",
+  "license" : "MIT",
+  "licenseUrl" : "https://jsoup.org/license"
+}, {
+  "name" : "jsr305",
+  "url" : "https://code.google.com/p/jsr-305/",
+  "version" : "3.0.2",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://code.google.com/p/jsr-305/source/browse/trunk/ri/LICENSE"
+}, {
+  "name" : "kotlinx-datetime-jvm",
+  "url" : "https://github.com/Kotlin/kotlinx-datetime",
+  "version" : "0.4.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx-datetime/blob/master/LICENSE.txt"
+}, {
+  "name" : "kotlinx.html",
+  "url" : "https://github.com/Kotlin/kotlinx.html",
+  "version" : "0.8.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/Kotlin/kotlinx.html/blob/master/LICENSE"
+}, {
+  "name" : "ktor.io TLS",
+  "url" : "https://github.com/ktorio/ktor",
+  "version" : "2.1.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
+}, {
+  "name" : "lz4-java",
+  "url" : "https://github.com/lz4/lz4-java",
+  "version" : "1.8.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/lz4/lz4-java/blob/master/LICENSE.txt"
+}, {
+  "name" : "markdown4j",
+  "url" : "https://code.google.com/p/markdown4j/",
+  "version" : "2.2-cj-1.1",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-3-Clause"
+}, {
+  "name" : "mercurial_prompthooks",
+  "url" : "https://github.com/willemv/mercurial_prompthooks",
+  "version" : "custom revision",
+  "license" : "GPLv2 (used as hg extension called from hg executable)",
+  "licenseUrl" : "https://github.com/willemv/mercurial_prompthooks/blob/master/LICENSE.txt"
+}, {
+  "name" : "morfologik-fsa",
+  "url" : "https://github.com/morfologik/morfologik-stemming",
+  "version" : "2.1.9",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "morfologik-fsa-builders",
+  "url" : "https://github.com/morfologik/morfologik-stemming",
+  "version" : "2.1.9",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "morfologik-speller",
+  "url" : "https://github.com/morfologik/morfologik-stemming",
+  "version" : "2.1.9",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "morfologik-stemming",
+  "url" : "https://github.com/morfologik/morfologik-stemming",
+  "version" : "2.1.9",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://opensource.org/licenses/BSD-2-Clause"
+}, {
+  "name" : "nest_asyncio",
+  "url" : "https://github.com/erdewit/nest_asyncio",
+  "version" : "custom revision",
+  "license" : "BSD 2-Clause License",
+  "licenseUrl" : "https://github.com/erdewit/nest_asyncio/blob/master/LICENSE"
+}, {
+  "name" : "net.loomchild.segment",
+  "url" : "https://github.com/loomchild/segment",
+  "version" : "2.0.1",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/loomchild/segment/blob/master/LICENSE.txt"
+}, {
+  "name" : "netty-buffer",
+  "url" : "https://netty.io",
+  "version" : "4.1.82.Final",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "netty-codec-http",
+  "url" : "https://netty.io",
+  "version" : "4.1.82.Final",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "netty-handler-proxy",
+  "url" : "https://netty.io",
+  "version" : "4.1.82.Final",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "ngram-slp",
+  "url" : "https://github.com/SLP-team/SLP-Core",
+  "version" : "0.0.3",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/SLP-team/SLP-Core/blob/master/LICENSE"
+}, {
+  "name" : "opentelemetry",
+  "url" : "https://opentelemetry.io/",
+  "version" : "1.18.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
+}, {
+  "name" : "opentelemetry-exporter-otlp-common",
+  "url" : "https://opentelemetry.io/",
+  "version" : "1.18.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
+}, {
+  "name" : "opentelemetry-extension-kotlin",
+  "url" : "https://opentelemetry.io/",
+  "version" : "1.18.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
+}, {
+  "name" : "pty4j",
+  "url" : "https://github.com/JetBrains/pty4j",
+  "version" : "0.12.10",
+  "license" : "Eclipse Public License 1.0",
+  "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
+}, {
+  "name" : "rd Swing integration",
+  "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-swing",
+  "version" : "2022.3.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
+}, {
+  "name" : "rd core",
+  "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-core",
+  "version" : "2022.3.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
+}, {
+  "name" : "rd framework",
+  "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-framework",
+  "version" : "2022.3.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
+}, {
+  "name" : "rd text buffers",
+  "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-text",
+  "version" : "2022.3.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
+}, {
+  "name" : "slf4j-jdk14",
+  "url" : "https://slf4j.org/",
+  "version" : "1.7.36",
+  "license" : "MIT",
+  "licenseUrl" : "https://slf4j.org/license.html"
+}, {
+  "name" : "snakeyaml-engine",
+  "url" : "https://bitbucket.org/snakeyaml/snakeyaml-engine/",
+  "version" : "2.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://bitbucket.org/snakeyaml/snakeyaml-engine/src/master/LICENSE.txt"
+}, {
+  "name" : "swingx",
+  "url" : "https://mvnrepository.com/artifact/org.swinglabs/swingx-core/1.6.2-2/",
+  "version" : "1.6.2-2",
+  "license" : "LGPL 2.1",
+  "licenseUrl" : "https://www.opensource.org/licenses/lgpl-2.1.php"
+}, {
+  "name" : "unit-api",
+  "url" : "https://github.com/unitsofmeasurement/unit-api",
+  "version" : "1.0",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/unitsofmeasurement/unit-api/blob/master/LICENSE"
+}, {
+  "name" : "uom-lib-common",
+  "url" : "https://github.com/unitsofmeasurement/uom-lib",
+  "version" : "1.1",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/unitsofmeasurement/uom-lib/blob/master/LICENSE"
+}, {
+  "name" : "weberknecht",
+  "url" : "https://github.com/pelotoncycle/weberknecht",
+  "version" : "0.1.5",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/pelotoncycle/weberknecht/blob/master/src/de/roderick/weberknecht/WebSocket.java"
+}, {
+  "name" : "winp",
+  "url" : "https://github.com/jenkinsci/winp",
+  "version" : "1.30.1",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/jenkinsci/winp/blob/master/LICENSE.txt"
+}, {
+  "name" : "xml-apis-ext",
+  "url" : "https://xerces.apache.org/xml-commons/components/external",
+  "version" : "1.3.04",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "xml-resolver",
+  "url" : "https://xml.apache.org/commons/components/resolver/",
+  "version" : "1.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
+}, {
+  "name" : "zip-signer",
+  "url" : "https://github.com/JetBrains/marketplace-zip-signer",
+  "version" : "0.1.8",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/marketplace-zip-signer/blob/master/LICENSE"
+}, {
+  "name" : "zstd-jni",
+  "url" : "https://github.com/luben/zstd-jni",
+  "version" : "1.5.2-5",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
+}, {
+  "name" : "zstd-jni-windows-aarch64",
+  "url" : "https://github.com/VladRassokhin/zstd-jni",
+  "version" : "1.5.2-5-25",
+  "license" : "BSD 2-Clause",
+  "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
+} ]

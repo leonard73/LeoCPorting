@@ -92,9 +92,9 @@ void leoJSON_decode_json_str(char * jsonStr)
         leoJSON_DECODE_ITEM * sub_dc_brace_r = leoJSON_DECODE_ITEM_Create(sub_len);
         leoJSON_DECODE_ITEM * sub_dc_comma   = leoJSON_DECODE_ITEM_Create(sub_len);
         leoJSON_DECODE_ITEM * sub_dc_dqm     = leoJSON_DECODE_ITEM_Create(sub_len);
-        leoJSON_ITEM total_items[len];
+        leoJSON_ITEM total_items[sub_len];
         int total_items_count=0;
-        
+        printf("j=%d\n",j);
         int skip1=0,skip2=0;
         for(int k=(start_index+1);k<end_index;k++)
         {
