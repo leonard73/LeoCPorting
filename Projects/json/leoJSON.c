@@ -80,10 +80,10 @@ void leoJSON_decode_json_str(char * jsonStr)
         gid++;
         read_ptr++;
     }
-   
+
     for(int j=0;j<dc_item_solo_brace_count;j++)
     {
-        leoJSON_item_solo_print(dc_item_solo_brace+j,jsonStr,"dc_item_solo_brace");
+        // leoJSON_item_solo_print(dc_item_solo_brace+j,jsonStr,"dc_item_solo_brace");
         int start_index = (dc_item_solo_brace+j)->index_s;
         int end_index   = (dc_item_solo_brace+j)->index_e;
         int sub_len     = end_index - start_index+1;
@@ -92,8 +92,9 @@ void leoJSON_decode_json_str(char * jsonStr)
         leoJSON_DECODE_ITEM * sub_dc_brace_r = leoJSON_DECODE_ITEM_Create(sub_len);
         leoJSON_DECODE_ITEM * sub_dc_comma   = leoJSON_DECODE_ITEM_Create(sub_len);
         leoJSON_DECODE_ITEM * sub_dc_dqm     = leoJSON_DECODE_ITEM_Create(sub_len);
-        leoJSON_ITEM total_items[sub_len];
+        leoJSON_ITEM total_items[len];
         int total_items_count=0;
+        
         int skip1=0,skip2=0;
         for(int k=(start_index+1);k<end_index;k++)
         {
@@ -153,10 +154,22 @@ void leoJSON_decode_json_str(char * jsonStr)
             }
         }
         //
-        printf("comma: %d\n",sub_dc_comma->count);
-        printf("dqm  : %d\n",sub_dc_dqm->count);
-        printf("colon: %d\n",sub_dc_colon->count);
-        printf("total_items_count: %d\n",total_items_count);
+        // printf("comma: %d\n",sub_dc_comma->count);
+        // printf("dqm  : %d\n",sub_dc_dqm->count);
+        // printf("colon: %d\n",sub_dc_colon->count);
+        // printf("total_items_count: %d\n",total_items_count);
+        for(int l=0;l<total_items_count;l++)
+        {
+            int label_lens = total_items[l].label_index_e - total_items[l].label_index_s +2;
+            char log_str[label_lens];
+            memcpy(log_str,jsonStr+total_items[l].label_index_s,label_lens-1);
+            log_str[label_lens-1] = '\0';
+            int value_lens = total_items[l].value_index_e - total_items[l].value_index_s +2;
+            char log_str_v[value_lens];
+            memcpy(log_str_v,jsonStr+total_items[l].value_index_s,value_lens-1);
+            log_str_v[value_lens-1] = '\0';
+            printf("[%s]:%s\n",log_str,log_str_v);
+        }
         leoJSON_DECODE_ITEM_Free(sub_dc_colon);
         leoJSON_DECODE_ITEM_Free(sub_dc_brace_l);
         leoJSON_DECODE_ITEM_Free(sub_dc_brace_r);
@@ -165,6 +178,7 @@ void leoJSON_decode_json_str(char * jsonStr)
         
         //
     }
+
     leoJSON_DECODE_ITEM_Free(dc_colon);
     leoJSON_DECODE_ITEM_Free(dc_brace_l);
     leoJSON_DECODE_ITEM_Free(dc_brace_r);
