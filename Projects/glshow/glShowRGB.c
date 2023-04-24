@@ -9,8 +9,8 @@ void init(void)
     glClearColor(0.0, 0.0, 0.0, 0.0);
     for(int i=0;i<TEST_PIXEL_NUM;i++)
     {
-        pixel_array[i*TEST_PIXEL_CHANNEL+0] = 255;
-        pixel_array[i*TEST_PIXEL_CHANNEL+1] = 0;
+        pixel_array[i*TEST_PIXEL_CHANNEL+0] = 0;
+        pixel_array[i*TEST_PIXEL_CHANNEL+1] = 255;
         pixel_array[i*TEST_PIXEL_CHANNEL+2] = 0;
     }
     return;

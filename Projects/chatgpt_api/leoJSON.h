@@ -25,5 +25,6 @@ leoJSON_DECODE_ITEM * leoJSON_DECODE_ITEM_Create(int maxSize);
 void leoJSON_DECODE_ITEM_Free(leoJSON_DECODE_ITEM * dc_item_ptr);
 void leoJSON_item_solo_print(leoJSON_ITEM_SOLO * item,char * jsonStr,char * tag);
 void log_label_value_string(char * label,char* value,int value_size);
-leoJSON_ITEM find_item_with_label_str(char * label);  
+void log_leoJSON_item(leoJSON_ITEM leoItem,char * str);
+leoJSON_ITEM find_item_with_label_str(char * jsonStr,char * label_find);
 #endif //__LEO_JSON_H__
