@@ -1,7 +1,7 @@
 cc:=gcc
 src:=./lzw.c ./lzw_demo.c
 inc:=-I./
-ccflag:=$(inc) -O3 -w
+ccflag:=$(inc) -O3 -w -lm
 exe:=lzwDemo
 
 build:

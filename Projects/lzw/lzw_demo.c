@@ -14,7 +14,7 @@ void parse_input_cmd(int argc,char * argv[])
     char * fileNameSrc=0,* fileNameDst=0;
     for(int i=1;i<argc;i++)
     {
-        if(cmd_find ==1 )
+        if(cmd_find >0 )
         {
             if(fileNameSrc==0)
             {
@@ -58,7 +58,10 @@ void parse_input_cmd(int argc,char * argv[])
             }break;
             case LZW_CMD_DECODE:
             {
-
+                if(!lzw_decoder(fileNameSrc,fileNameDst))
+                {
+                    printf("DECODE %s INTO %s WITH LZW OK!\n",fileNameSrc,fileNameDst);
+                }
             }break;
             default:break;
         }
