@@ -254,16 +254,67 @@ uint32_t readLzwBitsFromPath(char * path)
     }
     if(!strcmp((char*)(path+start_id),".lzwb9"  ))
     {
-        printf("lzwb9");
+        printf("lzwb9\n");
         return  9;
     }
     
+}
+uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_size)
+{
+    uint32_t coder_sz=1;
+    *output = (uint8_t*)malloc(coder_sz*sizeof(uint8_t));
+    DICTIONARY globalDict;
+    init_default_dictionary(&globalDict);
+    uint32_t lzw_data_sz=0;
+    TMP_MATCH_POOL tmpPool;
+    uint32_t record_encode_sz=0;
+    tmpPool.sz=0,tmpPool.array_data=&output[0][0];
+    output[0][0] = (uint8_t )input_dict_id_array[0];
+    for(uint32_t id=0;id<id_size;id++)
+    {
+        TMP_MATCH_POOL curPool = tmpPool;
+        curPool.sz++;
+        // log_tmp_match_pool(&curPool);
+        int ID_MATCHED = FindSameInDictPool(&curPool,&globalDict);
+        if(ID_MATCHED!=-1)
+        {
+            *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
+            for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
+            {
+                output[0][coder_sz++] = globalDict.dict_data_array[ID_MATCHED].data[k];
+            }
+        }
+        else
+        {
+            insertDictPool(&curPool,&globalDict);
+            int ID_MATCHED_P = FindSameInDictPool(&curPool,&globalDict);
+            if(ID_MATCHED!=-1)
+            {
+                *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
+                for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
+                {
+                    output[0][coder_sz++] = globalDict.dict_data_array[ID_MATCHED].data[k];
+                }
+            }
+            tmpPool.array_data=output[0] + coder_sz-1;
+            tmpPool.sz=1;
+        }
+    }
+    free_dictionary(&globalDict);
+    return coder_sz;
 }
 int lzw_decoder(char * fileSrc,char * fileDst)
 {
     uint8_t * in_data=0,*out_data=0;
     uint32_t infileSZ = read_data_from_file(&in_data,fileSrc);
     uint32_t lzwBits  = readLzwBitsFromPath(fileSrc);
+    uint32_t sz_in    = infileSZ * 8/lzwBits;
+    uint32_t *u32_in  = (uint32_t*)malloc(sz_in*sizeof(uint32_t)); 
+    decodeU32bitsArrayFromMbits(u32_in,fileSrc,sz_in,lzwBits);
+    uint32_t coder_sz = lzw_decode(u32_in,out_data,sz_in);
+    printf("coder_sz=%d\n",coder_sz);
+    free(u32_in);
+    free(out_data);
     // uint32_t lzwBits  = 0;
     // uint32_t outfileSZ =lzw_encode(in_data,&out_data,infileSZ,&lzwBits);
     // printf("read %s %d bytes!\n",fileSrc,infileSZ);
