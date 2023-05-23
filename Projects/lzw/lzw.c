@@ -45,19 +45,16 @@ void encodeNbitsArrayFromU32(uint32_t * u32_array,uint8_t* uN_array,uint32_t sz_
         }
     }
 }
-void decodeU32bitsArrayFromMbits(uint32_t * u32_array,uint8_t* uN_array,uint32_t sz_uN,uint32_t N_bits)
+void decodeU32bitsArrayFromMbits(uint32_t * u32_array,uint8_t* uN_array,uint32_t bytes_uN,uint32_t bytes_u32,uint32_t N_bits)
 {
-    memset(u32_array,0x00,sz_uN*sizeof(uint32_t));
-    for(uint32_t id_uN=0;id_uN<sz_uN;id_uN++)
+    memset(u32_array,0x00,bytes_u32);
+    for(uint32_t bit_id=0;bit_id<bytes_uN*8;bit_id++)
     {
-        for(uint32_t k=0;k<N_bits;k++)
-        {
-            uint32_t src_bytes_id = (id_uN*N_bits+k)/8;
-            uint32_t src_bits_id  = (id_uN*N_bits+k)%8;
-            uint32_t dst_index_id = id_uN;
-            uint32_t dst_bits_id  = k;
-            u32_array[dst_index_id] |=  ((uint32_t)(((uN_array[src_bytes_id] >> src_bits_id)&0x01))) << dst_bits_id;
-        }
+        uint32_t u8_byte_index   = bit_id / 8;
+        uint32_t u8_bit_index    = bit_id % 8;
+        uint32_t u32_index      = bit_id / N_bits;
+        uint32_t u32_bit_index  = bit_id % N_bits; 
+        u32_array[u32_index]   |= ((uint32_t)((uN_array[u8_byte_index] >> u8_bit_index)&0x01)) << u32_bit_index;
     }
 }
 typedef struct DICTIONARY_ELEM_t
@@ -270,34 +267,51 @@ uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_
     uint32_t record_encode_sz=0;
     tmpPool.sz=0,tmpPool.array_data=&output[0][0];
     output[0][0] = (uint8_t )input_dict_id_array[0];
-    for(uint32_t id=0;id<id_size;id++)
+    for(uint32_t id=0;id<coder_sz;id++)
     {
         TMP_MATCH_POOL curPool = tmpPool;
         curPool.sz++;
         // log_tmp_match_pool(&curPool);
         int ID_MATCHED = FindSameInDictPool(&curPool,&globalDict);
+        printf("id=%d,ID_MATCHED=%d\n",id,ID_MATCHED);
         if(ID_MATCHED!=-1)
         {
+            
             *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
             for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
             {
                 output[0][coder_sz++] = globalDict.dict_data_array[ID_MATCHED].data[k];
             }
+            tmpPool = curPool; 
         }
         else
         {
             insertDictPool(&curPool,&globalDict);
-            int ID_MATCHED_P = FindSameInDictPool(&curPool,&globalDict);
-            if(ID_MATCHED!=-1)
-            {
-                *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
-                for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
-                {
-                    output[0][coder_sz++] = globalDict.dict_data_array[ID_MATCHED].data[k];
-                }
-            }
-            tmpPool.array_data=output[0] + coder_sz-1;
-            tmpPool.sz=1;
+            // *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[globalDict.sz-1].sz)*sizeof(uint8_t));
+            // for(int k=0;k<globalDict.dict_data_array[globalDict.sz-1].sz;k++)
+            // {
+            //     output[0][coder_sz++] = globalDict.dict_data_array[globalDict.sz-1].data[k];
+            // }
+            tmpPool.array_data=output[0] + id;
+            tmpPool.sz=0;
+            // {
+            //     *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
+            //     for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
+            //     {
+            //         output[0][coder_sz] = globalDict.dict_data_array[ID_MATCHED].data[k];
+            //         curPool.sz++;
+            //         if( FindSameInDictPool(&curPool,&globalDict) == -1)
+            //         {
+            //             insertDictPool(&curPool,&globalDict);
+            //             tmpPool.array_data=output[0] + coder_sz-1;
+            //             tmpPool.sz=1;
+            //         }
+            //         else
+            //         {
+            //             tmpPool = curPool;
+            //         }
+            //     }
+            // }
         }
     }
     free_dictionary(&globalDict);
@@ -305,14 +319,36 @@ uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_
 }
 int lzw_decoder(char * fileSrc,char * fileDst)
 {
+    #if 0
+    const uint32_t u32_sz = 1024;
+    uint32_t u32_in[u32_sz],u32_out[u32_sz];
+    for(int i=0;i<u32_sz;i++)
+    {
+        u32_in[i]=i;
+    }
+    uint32_t u10_sz = (uint32_t)ceilf((float)(u32_sz * 32 )/10);
+    uint8_t  *u10_array = (uint8_t*)malloc(u10_sz*sizeof(uint8_t));
+    encodeNbitsArrayFromU32(u32_in,u10_array,u32_sz,10);
+    decodeU32bitsArrayFromMbits(u32_out,u10_array,u10_sz,u32_sz*sizeof(uint32_t),10);
+    for(int i=0;i<u32_sz;i++)
+    {
+        printf("in[%d]=%d;out[%d]=%d\n",i,u32_in[i],i,u32_out[i]);
+    }
+    free(u10_array);
+    #else
     uint8_t * in_data=0,*out_data=0;
     uint32_t infileSZ = read_data_from_file(&in_data,fileSrc);
     uint32_t lzwBits  = readLzwBitsFromPath(fileSrc);
     uint32_t sz_in    = infileSZ * 8/lzwBits;
-    uint32_t *u32_in  = (uint32_t*)malloc(sz_in*sizeof(uint32_t)); 
-    decodeU32bitsArrayFromMbits(u32_in,fileSrc,sz_in,lzwBits);
-    uint32_t coder_sz = lzw_decode(u32_in,out_data,sz_in);
+    uint32_t sz_in_u32 = (uint32_t)ceilf((float)infileSZ*8/lzwBits);
+    uint32_t *u32_in  = (uint32_t*)malloc(sz_in_u32*sizeof(uint32_t)); 
+    decodeU32bitsArrayFromMbits(u32_in,in_data,infileSZ,sz_in_u32*sizeof(uint32_t) ,lzwBits);
+    uint32_t coder_sz = lzw_decode(u32_in,&out_data,sz_in_u32);
     printf("coder_sz=%d\n",coder_sz);
+    for(int i=0;i<coder_sz;i++)
+    {
+        printf("out_data[%d]=%c\n",i,out_data[i]);
+    }
     free(u32_in);
     free(out_data);
     // uint32_t lzwBits  = 0;
@@ -332,4 +368,5 @@ int lzw_decoder(char * fileSrc,char * fileDst)
     // }
     // free(fileDst_final);
     return 0;
+    #endif
 }
