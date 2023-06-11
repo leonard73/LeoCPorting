@@ -1,10 +1,19 @@
 cc:=g++
-ccflag:=-w -O3 -luvc  `pkg-config --cflags --libs opencv4`
-src:=./uvcUtil.c
-exe:=./uvcUtil
+THIRD_PATY_LIBS_PATH:=$(PWD)/../../thirdParty/libs/linux
+ccflag:=-w -O3 -fpermissive -luvc -lusb-1.0 -L$(THIRD_PATY_LIBS_PATH)/. -I$(THIRD_PATY_LIBS_PATH)/
+ccflag+=-lGL -lGLU -lglut -w -O3
+# src:=./leouvc.c
+src_demo:=./leouvc.c ./leouvcDemo.c
+src_demo_gl:=./leouvc.c ./leouvcDemoGL.c
+exe_demo:=./leouvcDemo
+exe_demoGL:=./leouvcDemoGL
 build:
-		$(cc) $(src) $(ccflag) -o $(exe)
+		$(cc) $(src_demo) $(ccflag) -o $(exe_demo)
+		$(cc) $(src_demo_gl) $(ccflag) -o $(exe_demoGL)
 clean:
-		rm -rf $(exe)
+		rm -rf $(exe_demo)
+		rm -rf $(exe_demoGL)
 run:
-		./$(exe)
+		./$(exe_demo)
+run_gl:
+		./$(exe_demoGL)

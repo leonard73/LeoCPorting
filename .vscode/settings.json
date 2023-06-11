@@ -3,6 +3,9 @@
         "glut.h": "c",
         "stdio.h": "c",
         "cstdlib": "c",
-        "bmp.h": "c"
+        "bmp.h": "c",
+        "uvcutil.h": "c",
+        "uvcutils.h": "c",
+        "stdint.h": "c"
     }
 }

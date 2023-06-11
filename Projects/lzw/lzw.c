@@ -71,6 +71,7 @@ typedef struct TMP_MATCH_POOL_t
 {
     uint8_t * array_data;
     uint32_t  sz;
+    uint32_t  array_data_id;
 }TMP_MATCH_POOL;
 void log_tmp_match_pool(TMP_MATCH_POOL* pool)
 {
@@ -97,6 +98,20 @@ void free_dictionary(DICTIONARY * dict_p)
     if(dict_p->sz>0)
     {
         for(int i=0;i<256;i++)
+        {
+            if(dict_p->dict_data_array[i].sz>0)
+            {
+                free(dict_p->dict_data_array[i].data);
+            }
+        }
+        free(dict_p->dict_data_array);
+    }
+}
+void free_dictionary_freeAll(DICTIONARY * dict_p)
+{
+    if(dict_p->sz>0)
+    {
+        for(int i=0;i<dict_p->sz;i++)
         {
             if(dict_p->dict_data_array[i].sz>0)
             {
@@ -147,6 +162,15 @@ void insertDictPool(TMP_MATCH_POOL * tmpPool_p,DICTIONARY * dict_p)
     // memcpy(dict_p->dict_data_array[dict_p->sz-1].data,tmpPool_p->array_data,(tmpPool_p->sz)*sizeof(uint8_t));
     dict_p->dict_data_array[dict_p->sz-1].sz = tmpPool_p->sz;
 }
+void insertDictPool_memCpy(TMP_MATCH_POOL * tmpPool_p,DICTIONARY * dict_p)
+{
+    dict_p->sz++;
+    dict_p->dict_data_array=(DICTIONARY_ELEM*)realloc( dict_p->dict_data_array,dict_p->sz*sizeof(DICTIONARY_ELEM));
+    dict_p->dict_data_array[dict_p->sz-1].data = tmpPool_p->array_data;
+    dict_p->dict_data_array[dict_p->sz-1].data=(uint8_t*)malloc((tmpPool_p->sz)*sizeof(uint8_t));
+    memcpy(dict_p->dict_data_array[dict_p->sz-1].data,tmpPool_p->array_data,(tmpPool_p->sz)*sizeof(uint8_t));
+    dict_p->dict_data_array[dict_p->sz-1].sz = tmpPool_p->sz;
+}
 void logDictPool(DICTIONARY * dict_p)
 {
     for(int i=0;i<dict_p->sz;i++)
@@ -189,7 +213,7 @@ uint32_t lzw_encode(uint8_t * input,uint8_t** output,uint32_t in_sz,uint32_t * l
                 insertDictPool(&curPool,&globalDict);
             } 
             encode_index_array[record_encode_sz++]=FindSameInDictPool(&tmpPool,&globalDict);
-            // printf("ENCODE:[%d]\n",encode_index_array[record_encode_sz-1]);
+            printf("ENCODE:[%d]\n",encode_index_array[record_encode_sz-1]);
             tmpPool.array_data=input+i;
             tmpPool.sz=1;
             // tmpPool.array_data=(uint8_t*)realloc(tmpPool.array_data,1);
@@ -200,8 +224,9 @@ uint32_t lzw_encode(uint8_t * input,uint8_t** output,uint32_t in_sz,uint32_t * l
     }
     {
         tmpPool.array_data=input+in_sz-1;
+        tmpPool.sz=1;
         encode_index_array[record_encode_sz++]=FindSameInDictPool(&tmpPool,&globalDict);
-        // printf("ENCODE:[%d]\n",encode_index_array[record_encode_sz-1]);
+        printf("ENCODE:[%d]\n",encode_index_array[record_encode_sz-1]);
     }
     uint32_t maxBitsDst = (int)ceilf( log2f(globalDict.sz)) ;
     printf("ENCODE SZ = %d\n",record_encode_sz);
@@ -265,22 +290,67 @@ uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_
     uint32_t lzw_data_sz=0;
     TMP_MATCH_POOL tmpPool;
     uint32_t record_encode_sz=0;
-    tmpPool.sz=0,tmpPool.array_data=&output[0][0];
+    tmpPool.sz=0,tmpPool.array_data=&output[0][0];tmpPool.array_data_id=0;
     output[0][0] = (uint8_t )input_dict_id_array[0];
-    for(uint32_t id=0;id<coder_sz;id++)
+    uint32_t index_id=0;
+    for(uint32_t id=0;id<=coder_sz;id++)
     {
+        printf("id=%d;dictSz=%d;coder_sz=%d\n",id,globalDict.sz,coder_sz);
+        #if 1
+        //s1 if index_id < id_size ; decode to output buffer
+
+        //s2 gen dict
         TMP_MATCH_POOL curPool = tmpPool;
+        curPool.array_data     = output[0] + curPool.array_data_id;
         curPool.sz++;
-        // log_tmp_match_pool(&curPool);
+        if(( FindSameInDictPool(&curPool,&globalDict))==-1)
+        {
+            insertDictPool_memCpy(&curPool,&globalDict);
+            curPool.array_data_id = id+1;
+            curPool.sz=0;
+        }
+        tmpPool = curPool;
+        if(index_id < id_size)
+        {
+            uint32_t dict_id = input_dict_id_array[index_id];
+            if(dict_id < globalDict.sz)
+            {
+                *output = (uint8_t*)realloc(*output,coder_sz+globalDict.dict_data_array[dict_id].sz);
+                for(int k=0;k<globalDict.dict_data_array[dict_id].sz;k++)
+                {
+                    output[0][coder_sz+k] = globalDict.dict_data_array[dict_id].data[k];
+                }
+                coder_sz+=globalDict.dict_data_array[dict_id].sz;
+            }
+            else
+            {
+                printf("dict_id=%d\n",dict_id);
+            }
+            index_id++;
+        }
+        #else
+        TMP_MATCH_POOL curPool = tmpPool;
+        tmpPool.sz++;
+        log_tmp_match_pool(&tmpPool);
         int ID_MATCHED = FindSameInDictPool(&curPool,&globalDict);
         printf("id=%d,ID_MATCHED=%d\n",id,ID_MATCHED);
+        continue;
         if(ID_MATCHED!=-1)
         {
-            
+            int id_ = curPool.array_data_id;
             *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
+            curPool.array_data = *output + id_ ;
             for(int k=0;k<globalDict.dict_data_array[ID_MATCHED].sz;k++)
             {
                 output[0][coder_sz++] = globalDict.dict_data_array[ID_MATCHED].data[k];
+                curPool.sz++;
+                if(FindSameInDictPool(&curPool,&globalDict)==-1)
+                {
+                    insertDictPool(&curPool,&globalDict);
+                    curPool.array_data=output[0]+curPool.array_data_id + curPool.sz-1;
+                    curPool.array_data_id=curPool.array_data_id+ curPool.sz-1;
+                    curPool.sz=0;
+                }
             }
             tmpPool = curPool; 
         }
@@ -292,7 +362,8 @@ uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_
             // {
             //     output[0][coder_sz++] = globalDict.dict_data_array[globalDict.sz-1].data[k];
             // }
-            tmpPool.array_data=output[0] + id;
+            tmpPool.array_data=output[0]+tmpPool.array_data_id + tmpPool.sz-1;
+            tmpPool.array_data_id=tmpPool.array_data_id+ tmpPool.sz-1;
             tmpPool.sz=0;
             // {
             //     *output = (uint8_t*)realloc(*output,(coder_sz+globalDict.dict_data_array[ID_MATCHED].sz)*sizeof(uint8_t));
@@ -313,8 +384,9 @@ uint32_t lzw_decode(uint32_t * input_dict_id_array,uint8_t** output,uint32_t id_
             //     }
             // }
         }
+        #endif
     }
-    free_dictionary(&globalDict);
+    free_dictionary_freeAll(&globalDict);
     return coder_sz;
 }
 int lzw_decoder(char * fileSrc,char * fileDst)
@@ -340,9 +412,13 @@ int lzw_decoder(char * fileSrc,char * fileDst)
     uint32_t infileSZ = read_data_from_file(&in_data,fileSrc);
     uint32_t lzwBits  = readLzwBitsFromPath(fileSrc);
     uint32_t sz_in    = infileSZ * 8/lzwBits;
-    uint32_t sz_in_u32 = (uint32_t)ceilf((float)infileSZ*8/lzwBits);
+    uint32_t sz_in_u32 = (uint32_t)floor((float)infileSZ*8/lzwBits);
     uint32_t *u32_in  = (uint32_t*)malloc(sz_in_u32*sizeof(uint32_t)); 
     decodeU32bitsArrayFromMbits(u32_in,in_data,infileSZ,sz_in_u32*sizeof(uint32_t) ,lzwBits);
+    for(uint32_t i=0;i<sz_in_u32;i++)
+    {
+        printf("u32_in[%d]=%d\n",i,u32_in[i]);
+    }
     uint32_t coder_sz = lzw_decode(u32_in,&out_data,sz_in_u32);
     printf("coder_sz=%d\n",coder_sz);
     for(int i=0;i<coder_sz;i++)
