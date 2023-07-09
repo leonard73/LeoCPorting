@@ -7,5 +7,6 @@
         "uvcutil.h": "c",
         "uvcutils.h": "c",
         "stdint.h": "c"
-    }
+    },
+    "cmake.sourceDirectory": "/home/pan/workspace/gitlab/leo/LeoCPorintg/thirdParty/libuvc"
 }
