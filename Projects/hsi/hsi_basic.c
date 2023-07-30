@@ -131,6 +131,7 @@ void enhanceHSI_Retinex( float* Hue, float* Saturation, float*  Intensity,uint32
     generate_gaussian_kernel_2d(gaussian_kernel,smooth_window_size,1.2f);
     do_convolution_2d_f32(Intensity,L_array,gaussian_kernel,width,height,smooth_window_size);
     float max_v=0.0f;
+    float min_v=255.0f;
     float gamma = 1.0;
     for(uint32_t i=0;i<(width*height);i++)
     {
@@ -140,14 +141,17 @@ void enhanceHSI_Retinex( float* Hue, float* Saturation, float*  Intensity,uint32
         Intensity[i] = exp2f(diff);
         // Intensity[i] = L_array[i] > 0.0f? Intensity[i]/(powf( L_array[i]/255.0f,gamma ) * 255.0f) : 0.0f;
         max_v = Intensity[i] > max_v  ? Intensity[i] : max_v;
+        min_v = Intensity[i] < min_v  ? Intensity[i] : min_v;
         // printf(" %f; ",Intensity[i] );
         // Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
     }
-    printf("max_v=%f\n",max_v);
+    printf("max_v=%f;min_v=%f\n",max_v,min_v);
     float max_v_inv = 255.0f /max_v;
+    gamma=0.5;
     for(uint32_t i=0;i<(width*height);i++)
     {
-        Intensity[i] *= max_v_inv;
+        Intensity[i] = 255.0f*(Intensity[i]-min_v)/(max_v-min_v);
+        Intensity[i] = powf( Intensity[i]/255.0f,gamma ) * 255.0f;
         Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
     }
     free(gaussian_kernel);
