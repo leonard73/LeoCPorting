@@ -17,6 +17,19 @@
 GLubyte pixel_array2[CAM2_PIXEL_NUM*CAM2_PIXEL_CHANNEL];
 int glWindow1,glWindow2;
 int render_start=1,render_start2=1;
+#define HSI_MODE_0_H1_S1_I1   0
+#define HSI_MODE_1_H1_S1_I0_5 1
+#define HSI_MODE_2_H1_S1_I0_2 2
+#define HSI_MODE_3_H1_S0_8_I1 3
+#define HSI_MODE_4_H1_S0_5_I1 4
+#define HSI_MODE_5_H1_S0_2_I1 5
+#define HSI_MODE_6_H0_8_S1_I1 6
+#define HSI_MODE_7_H0_5_S1_I1 7
+#define HSI_MODE_8_H0_3_S1_I1 8
+#define HSI_MODE_9_H1_S1_3_I1 9
+#define HSI_MODE_10_GAMMA_I   10
+float global_Rh = 1.0f,global_Rs = 1.0f,global_Ri = 1.0f;
+uint32_t gammaHistMode=0;
 void renderBitmapString(int x, int y, void *font, const char *string)
 {
     const char *c;
@@ -60,9 +73,9 @@ void cam2_callback(uvc_frame_t *frame, void *ptr)
     }
     // cvt_yuyv2rgb(data_p,pixel_array2,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT);
     {
-        float Rh = 1.3f;
-        float Rs = 1.0f;
-        float Ri = 1.0f;
+        float Rh = global_Rh;
+        float Rs = global_Rs;
+        float Ri = global_Ri;
         //yuyv2rgb
         uint8_t * rgb888_array = (uint8_t*)malloc(CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT*3*sizeof(uint8_t));
         float   * Hue          = (float*)  malloc(CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT*sizeof(float));
@@ -70,7 +83,15 @@ void cam2_callback(uvc_frame_t *frame, void *ptr)
         float   * Intensity    = (float*)  malloc(CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT*sizeof(float));
         cvt_yuyv2rgb(data_p,rgb888_array,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT);
         rgb888_to_hsiF32(rgb888_array,Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT);
-        enhanceHSI_F32( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT, Rh, Rs, Ri);
+        if(gammaHistMode)
+        {
+          enhanceHSI_HistGamma( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT, 95);
+        }
+        else
+        {
+          enhanceHSI_F32( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT, Rh, Rs, Ri);
+        }
+        
         hsiF32_to_rgb888(pixel_array2,Hue,Saturation, Intensity,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT);  
         free(rgb888_array);
         free(Hue);
@@ -78,6 +99,26 @@ void cam2_callback(uvc_frame_t *frame, void *ptr)
         free(Intensity);
         
     }
+}
+void FillOption(GLint selectedOption)
+{
+  gammaHistMode=0;
+	switch (selectedOption)
+	{
+	  case HSI_MODE_0_H1_S1_I1:   global_Rh=1.0f,global_Rs=1.0f,global_Ri=1.0f;break;
+		case HSI_MODE_1_H1_S1_I0_5: global_Rh=1.0f,global_Rs=1.0f,global_Ri=0.5f;break;
+    case HSI_MODE_2_H1_S1_I0_2: global_Rh=1.0f,global_Rs=1.0f,global_Ri=0.2f;break;
+    case HSI_MODE_3_H1_S0_8_I1: global_Rh=1.0f,global_Rs=0.8f,global_Ri=1.0f;break;
+    case HSI_MODE_4_H1_S0_5_I1: global_Rh=1.0f,global_Rs=0.5f,global_Ri=1.0f;break;
+    case HSI_MODE_5_H1_S0_2_I1: global_Rh=1.0f,global_Rs=0.2f,global_Ri=1.0f;break;
+    case HSI_MODE_6_H0_8_S1_I1: global_Rh=0.8f,global_Rs=1.0f,global_Ri=1.0f;break;
+    case HSI_MODE_7_H0_5_S1_I1: global_Rh=0.5f,global_Rs=1.0f,global_Ri=1.0f;break;
+    case HSI_MODE_8_H0_3_S1_I1: global_Rh=0.3f,global_Rs=1.0f,global_Ri=1.0f;break;
+    case HSI_MODE_9_H1_S1_3_I1: global_Rh=1.0f,global_Rs=1.3f,global_Ri=1.0f;break;
+    case HSI_MODE_10_GAMMA_I:   gammaHistMode=1;break;
+	}
+ 
+	glutPostRedisplay();
 }
 int main(int argc , char * argv[])
 {
@@ -102,6 +143,19 @@ int main(int argc , char * argv[])
     glWindow2 = glutCreateWindow("OpenGL glShowRGB_CAM2");
     glutSetWindow(glWindow2);
     glutIdleFunc(idle_global);  
+    glutCreateMenu(FillOption);
+	  glutAddMenuEntry("HSI_MODE_0_H1_S1_I1", HSI_MODE_0_H1_S1_I1);
+	  glutAddMenuEntry("HSI_MODE_1_H1_S1_I0_5", HSI_MODE_1_H1_S1_I0_5);
+    glutAddMenuEntry("HSI_MODE_2_H1_S1_I0_2", HSI_MODE_2_H1_S1_I0_2);
+    glutAddMenuEntry("HSI_MODE_3_H1_S0_8_I1", HSI_MODE_3_H1_S0_8_I1);
+    glutAddMenuEntry("HSI_MODE_4_H1_S0_5_I1", HSI_MODE_4_H1_S0_5_I1);
+    glutAddMenuEntry("HSI_MODE_5_H1_S0_2_I1", HSI_MODE_5_H1_S0_2_I1);
+    glutAddMenuEntry("HSI_MODE_6_H0_8_S1_I1", HSI_MODE_6_H0_8_S1_I1);
+    glutAddMenuEntry("HSI_MODE_7_H0_5_S1_I1", HSI_MODE_7_H0_5_S1_I1);
+    glutAddMenuEntry("HSI_MODE_8_H0_3_S1_I1", HSI_MODE_8_H0_3_S1_I1);
+    glutAddMenuEntry("HSI_MODE_9_H1_S1_3_I1", HSI_MODE_9_H1_S1_3_I1);
+    glutAddMenuEntry("HSI_MODE_10_GAMMA_I", HSI_MODE_10_GAMMA_I);
+	  glutAttachMenu(GLUT_RIGHT_BUTTON);
     glutMainLoop();
     //
 

@@ -61,3 +61,18 @@ void enhanceHSI_F32( float* Hue, float* Saturation, float*  Intensity,uint32_t p
         Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
     }
 }
+void enhanceHSI_HistGamma( float* Hue, float* Saturation, float*  Intensity,uint32_t pixels,uint8_t bottom_limit)
+{
+    uint32_t bottom_limit_counter=0;
+    for(uint32_t i=0;i<pixels;i++)
+    {
+        bottom_limit_counter = (Intensity[i] < (float)bottom_limit) ? (bottom_limit_counter+1) : bottom_limit_counter;
+    }
+    float gamma =1.0f -   ((float)bottom_limit_counter/(float)pixels) ; 
+    gamma = CLAMP_(gamma,0.7,1.0);
+    for(uint32_t i=0;i<pixels;i++)
+    {
+        Intensity[i] = powf( Intensity[i]/255.0f,gamma ) * 255.0f;
+        Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
+    }    
+}
