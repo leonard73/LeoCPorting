@@ -85,7 +85,8 @@ void cam2_callback(uvc_frame_t *frame, void *ptr)
         rgb888_to_hsiF32(rgb888_array,Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT);
         if(gammaHistMode)
         {
-          enhanceHSI_HistGamma( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT, 95);
+          // enhanceHSI_HistGamma( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH*CAM2_PIXEL_HEIGHT, 95);
+          enhanceHSI_Retinex( Hue, Saturation,  Intensity,CAM2_PIXEL_WIDTH,CAM2_PIXEL_HEIGHT,7);
         }
         else
         {

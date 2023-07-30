@@ -1,8 +1,26 @@
 #include "hsi_basic.h"
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #define MIN_(A,B) ( (A)<(B) ? A : B )
 #define MAX_(A,B) ( (A)>(B) ? A : B )
 #define CLAMP_(V,A,B) (MIN_(MAX_(V,A),B))
+#define M_PI_ (3.14159265358979323846f)
+#define M_E_  (2.7182818284590452354f)
+#define _GET_GAUSSIAN_K2D_(x,y,sigma2) ((1.0f/(2*M_PI_*sigma2)) * powf(M_E_,(x*x+y*y)/((-2.0f)*sigma2)) )
+void generate_gaussian_kernel_2d(float *gaussianKernel_2D,uint32_t kernel_size,float sigma)
+{
+   int k_h =  kernel_size / 2;
+   int id=0;
+   for(int h  =  -k_h;  h <=  k_h ;  ++  h)
+   {
+       for(int w = -k_h; w <= k_h ; ++ w)
+       {
+           gaussianKernel_2D[id++] = _GET_GAUSSIAN_K2D_(w,h,sigma*sigma);
+       }
+   }
+}
 void rgb888_to_hsiF32(const uint8_t* rgb,float* Hue, float* Saturation, float*  Intensity,uint32_t width,uint32_t height)
 {
     const float my_pi = 3.14159265358979323846f;
@@ -75,4 +93,63 @@ void enhanceHSI_HistGamma( float* Hue, float* Saturation, float*  Intensity,uint
         Intensity[i] = powf( Intensity[i]/255.0f,gamma ) * 255.0f;
         Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
     }    
+}
+void do_convolution_2d_f32(float * input2d,float* output2d,float * kernel,uint32_t w,uint32_t h,uint32_t window_sz)
+{
+    int radius = window_sz/2;
+    memcpy(output2d,input2d,radius*w*sizeof(float));
+    for(int i=radius;i<(h-radius);i++)
+    {
+        for(int j=0;j<radius;j++)
+        {
+            output2d[i*w+j] = input2d[i*w+j];
+        }
+        for(int j=radius;j<(w-radius);j++)
+        {
+            float sum=0.0f;
+            int counter=0;
+            for(int a = (i-radius);a<=(i+radius);a++)
+            {
+                for(int b=(j-radius);b<=(j+radius);b++)
+                {
+                    sum += input2d[a*w+b] * kernel[counter++];
+                }
+            }
+            output2d[i*w+j] = sum;
+        }
+        for(int j=w-radius;j<w;j++)
+        {
+            output2d[i*w+j] = input2d[i*w+j];
+        }
+    }
+    memcpy(output2d+(h-radius)*w,input2d+(h-radius)*w,radius*w*sizeof(float));
+}
+void enhanceHSI_Retinex( float* Hue, float* Saturation, float*  Intensity,uint32_t width,uint32_t height,uint32_t smooth_window_size)
+{
+    float * L_array = (float*) malloc(width * height * sizeof(float));
+    float * gaussian_kernel = (float*) malloc(smooth_window_size*smooth_window_size*sizeof(float));
+    generate_gaussian_kernel_2d(gaussian_kernel,smooth_window_size,1.2f);
+    do_convolution_2d_f32(Intensity,L_array,gaussian_kernel,width,height,smooth_window_size);
+    float max_v=0.0f;
+    float gamma = 1.0;
+    for(uint32_t i=0;i<(width*height);i++)
+    {
+        L_array[i] = powf( L_array[i]/255.0f,gamma ) * 255.0f;
+        float diff =fabsf( log2f(Intensity[i])-log2f(L_array[i]));
+        diff = diff > 0.0f ? diff:0.0f;
+        Intensity[i] = exp2f(diff);
+        // Intensity[i] = L_array[i] > 0.0f? Intensity[i]/(powf( L_array[i]/255.0f,gamma ) * 255.0f) : 0.0f;
+        max_v = Intensity[i] > max_v  ? Intensity[i] : max_v;
+        // printf(" %f; ",Intensity[i] );
+        // Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
+    }
+    printf("max_v=%f\n",max_v);
+    float max_v_inv = 255.0f /max_v;
+    for(uint32_t i=0;i<(width*height);i++)
+    {
+        Intensity[i] *= max_v_inv;
+        Intensity[i]=CLAMP_(Intensity[i],0.0f,255.0f);
+    }
+    free(gaussian_kernel);
+    free(L_array);   
 }
