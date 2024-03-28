@@ -17,6 +17,6 @@
 #define LIBUVC_VERSION_GTE(major, minor, patch)                         \
   (LIBUVC_VERSION_INT >= (((major) << 16) | ((minor) << 8) | (patch)))
 
-#define LIBUVC_HAS_JPEG 1
+/* #undef LIBUVC_HAS_JPEG */
 
 #endif // !def(LIBUVC_CONFIG_H)

@@ -4,13 +4,14 @@ cd ${THIRDPARTY_FOLDER}/libusb
 sh bootstrap.sh
 ./configure  --disable-udev 
 make
-
+make install
 
 cd ${THIRDPARTY_FOLDER}/libuvc
 mkdir -p build/
 cd build
 cmake ..
 make 
+make install
 
 mkdir -p ${THIRDPARTY_FOLDER}/libs/
 mkdir -p ${THIRDPARTY_FOLDER}/libs/linux/
