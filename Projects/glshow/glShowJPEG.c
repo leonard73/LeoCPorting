@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <jpeglib.h>
 #include <GL/glut.h>
 
@@ -42,7 +41,7 @@ RGBImage decode_jpeg(const char *filename) {
     RGBImage rgbImage;
     rgbImage.width = cinfo.output_width;
     rgbImage.height = cinfo.output_height;
-    rgbImage.data = (unsigned char *)malloc(cinfo.output_width * cinfo.output_height * 3);
+    rgbImage.data = (unsigned char *)malloc(cinfo.output_width * cinfo.output_height * cinfo.output_components);
     if (!rgbImage.data) {
         fprintf(stderr, "Error allocating memory for image data\n");
         exit(EXIT_FAILURE);
@@ -50,7 +49,7 @@ RGBImage decode_jpeg(const char *filename) {
 
     // Read scanlines and decode image
     while (cinfo.output_scanline < cinfo.output_height) {
-        unsigned char *buffer = rgbImage.data + cinfo.output_scanline * cinfo.output_width * 3;
+        unsigned char *buffer = rgbImage.data + cinfo.output_scanline * cinfo.output_width * cinfo.output_components;
         jpeg_read_scanlines(&cinfo, &buffer, 1);
     }
 
@@ -65,20 +64,25 @@ RGBImage decode_jpeg(const char *filename) {
 
     return rgbImage;
 }
-GLubyte *pixel_array;
+
+RGBImage image;
 GLuint textureID; // Texture ID
+
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Bind the texture
     glBindTexture(GL_TEXTURE_2D, textureID);
 
-    // Render a textured quad
+    // Set texture data
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+
+    // Render a textured quad covering the entire viewport
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex2f(0, 0);
-    glTexCoord2f(1, 0); glVertex2f(1, 0);
-    glTexCoord2f(1, 1); glVertex2f(1, 1);
-    glTexCoord2f(0, 1); glVertex2f(0, 1);
+    glTexCoord2f(0, 1); glVertex2f(-1, -1);  // Bottom-left
+    glTexCoord2f(1, 1); glVertex2f(1, -1);   // Bottom-right
+    glTexCoord2f(1, 0); glVertex2f(1, 1);    // Top-right
+    glTexCoord2f(0, 0); glVertex2f(-1, 1);   // Top-left
     glEnd();
 
     glutSwapBuffers();
@@ -92,36 +96,24 @@ int main(int argc, char *argv[]) {
     // Initialize GLUT
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(800, 800);
-    glutCreateWindow("JPEG Viewer");
+    glutCreateWindow("RGB Image Viewer");
+    glutDisplayFunc(display);
 
-    // Initialize OpenGL
+    // Decode JPEG image and extract RGB data
+    image = decode_jpeg(argv[1]);
+
+    // Set up OpenGL
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluOrtho2D(0, 1, 0, 1); // Adjusted viewport to display the image correctly
-
-    // Load JPEG image and extract RGB data
-    RGBImage image = decode_jpeg(argv[1]);
-
-    // Generate a texture ID
-    glGenTextures(1, &textureID);
-
-    // Bind the texture
-    glBindTexture(GL_TEXTURE_2D, textureID);
-
-    // Set texture parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    // Set texture data
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.width, image.height, 0, GL_RGB, GL_UNSIGNED_BYTE, image.data);
+    glOrtho(-1, 1, -1, 1, -1, 1);
 
     // Enable texture mapping
     glEnable(GL_TEXTURE_2D);
-
-    // Register display callback function
-    glutDisplayFunc(display);
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     // Enter GLUT event loop
     glutMainLoop();

@@ -29,7 +29,7 @@ run_app2:
 run_app3:
 		./$(exefile3) ./lena.bmp
 run_app4:
-		./$(exefile4) ./testorig.jpg
+		./$(exefile4) ./lena.jpeg
 clean:
 		rm -rf $(exefile1)
 		rm -rf $(exefile2)
